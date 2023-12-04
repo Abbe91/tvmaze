@@ -1,0 +1,157 @@
+body {
+  background-color: #333;
+  color: #fff;
+  margin: 0;
+}
+
+.container {
+  text-align: center;
+  padding: 20px;
+}
+
+.search-form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  transition: justify-content 0.5s ease-in-out;
+}
+
+.logo {
+  margin-bottom: 20px;
+}
+
+.go-home, .search-form button {
+  padding: 15px 30px;
+  background-color: #3c948b;
+  margin: 3px;
+  color: #fff;
+  border: none;
+  border-radius: 4px 5px 5px 5px;
+  cursor: pointer;
+}
+
+.search-form {
+  display: flex;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.search-form input {
+  width: 400px;
+  padding: 15px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px 0 0 5px;
+}
+
+.search-result-item {
+  border-radius: 8px;
+  margin: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+  box-sizing: border-box;
+  width: calc(25% - 20px);
+}
+
+.search-result-item:hover {
+  transform: scale(1.05);
+}
+
+.search-result-item img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.search-result-title {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.star {
+  color: #fdd835;
+  margin-right: 2px;
+}
+
+.search-results {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.show-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.show-details-header {
+  margin-bottom: 20px;
+}
+
+.show-details-image {
+  width: 200px;
+  height: auto;
+}
+
+.cast-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cast-list li {
+  margin-bottom: 8px;
+}
+
+.nav-link {
+  padding: 5px;
+  color: white;
+}
+
+.cast-section, .cast-container {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cast-member {
+  width: 45%;
+  margin: 10px;
+  text-align: center;
+}
+
+.cast-member-image {
+  width: 120px;
+  border-radius: 10%;
+}
+
+@media only screen and (max-width: 600px) {
+  .search-result-item {
+    width: calc(50% - 30px);
+  }
+
+  .search-form input {
+    max-width: 200px;
+    padding: 15px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+  }
+
+  .search-results {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .cast-member {
+    width: calc(50% - 30px);
+  }
+}
