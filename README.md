@@ -71,6 +71,8 @@ ReactJS is the chosen framework for building the web application.
 
 No external CSS libraries or frameworks were used, ensuring a custom styling approach.
 
+Implementation of tests for better code quality and reliability.
+
 Nice to Have (Pending)
 Due to time constraints, some of the desired features have not been fully implemented. Future enhancements may include:
 
@@ -78,7 +80,6 @@ Feedback to users regarding errors or slow API connections, enhancing the user e
 
 Routing improvements to enable users to share direct links to detailed information about a specific TV show.
 
-Implementation of tests for better code quality and reliability.
 
 Additional design enhancements, including animations and a more refined user interface.
 
