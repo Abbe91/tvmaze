@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { Routes, Route, BrowserRouter as Router } from 'react-router-dom';
 import SearchForm from './components/SearchForm';
-import SearchResult from './components/SearchResult';
-import ShowDetails from './components/ShowDetails';
+import SearchResult from './views/SearchResult';
+import ShowDetails from './views/ShowDetails';
 
 import './App.css';
 
@@ -35,12 +34,21 @@ const App: React.FC = () => {
     const fetchSearchResults = async () => {
       if (searchQuery.trim() !== '') {
         try {
-          const response = await axios.get(`https://api.tvmaze.com/search/shows?q=${searchQuery}`);
-          setSearchResults(response.data);
+          const response = await fetch(`https://api.tvmaze.com/search/shows?q=${searchQuery}`);
+      
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+      
+          const data = await response.json();
+          setSearchResults(data);
+          console.log(data)
         } catch (error) {
           console.error('Error fetching search results:', error);
         }
       }
+      
+
     };
 
     fetchSearchResults();
@@ -52,20 +60,26 @@ const App: React.FC = () => {
   };
 
   const handleSelectShow = async (showId: number) => {
-    try {
-      const response = await axios.get(`https://api.tvmaze.com/shows/${showId}/cast`);
-      const cast = response.data;
-      const selected = searchResults.find((result) => result.show.id === showId);
-
-      if (selected) {
-        setSelectedShow({ ...selected.show, cast });
-        console.log(response.data[1].person.image.medium);
+    
+      try {
+        const response = await fetch(`https://api.tvmaze.com/shows/${showId}/cast`);
+    
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+    
+        const cast = await response.json();
+        const selected = searchResults.find((result) => result.show.id === showId);
+    
+        if (selected) {
+          setSelectedShow({ ...selected.show, cast });
+          console.log(cast[1].person.image.medium);
+        }
+      } catch (error) {
+        console.error('Error fetching cast information:', error);
       }
-    } catch (error) {
-      console.error('Error fetching cast information:', error);
-      
-    }
-  };
+    };
+    
   
   return (
     <div className="container">
